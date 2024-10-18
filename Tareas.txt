@@ -1,0 +1,5 @@
+Gilmer - Estructuras
+Sebastian - Enemigos
+Kotaro - Nodos
+Mirko - Menu
+Raphael - GameManager
