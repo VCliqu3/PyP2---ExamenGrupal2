@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7bd7674966171459d88c202204a1e4, type: 3}
   m_Name: Helicopter
   m_EditorClassIdentifier: 
+  entityType: 3
   entityName: Helicopter
   health: 30
   price: 40
   damage: 30
-  speed: 2
+  attackSpeed: 0.3
+  projectileSpeed: 0.5
+  speed: 1

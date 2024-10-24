@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13ff9c9911b8ca74e8af0b216a1ce712, type: 3}
   m_Name: DefenseStructureSO
   m_EditorClassIdentifier: 
+  entityType: 0
   entityName: Defense Structure
   health: 150
   price: 100
-  damage: 20
+  damage: 40
+  attackSpeed: 0.25
+  projectileSpeed: 3
