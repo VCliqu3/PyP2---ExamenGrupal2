@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class EntityHealth : MonoBehaviour,IHasHealth
 {
-    [Header("Settings")]
-    [SerializeField] private UnitSO entitySO;
+    [Header("Components")]
+    [SerializeField] private Entity entity;
 
     private int health;
+
+    public Entity Entity => entity;
 
     public event EventHandler<OnHealthEventArgs> OnHealhIncreased;
     public event EventHandler<OnHealthEventArgs> OnHealhDecreased;
@@ -27,14 +29,14 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
     public class OnAnyHealthEventArgs : EventArgs
     {
+        public EntityHealth entityHealth;
         public int health;
         public int quantity;
-        public EntityHealth entity;
     }
 
     public class OnAnyEntityDeathEventArgs : EventArgs
     {
-        public EntityHealth entity;
+        public EntityHealth entityHealth;
     }
 
     private void Start()
@@ -44,11 +46,11 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
     private void InitializeVariables()
     {
-        health = entitySO.health;
+        health = entity.EntitySO.health;
     }
 
     public int GetHealth() => health;
-    public int GetMaxHealth() => entitySO.health;
+    public int GetMaxHealth() => entity.EntitySO.health;
 
     public void IncreaseHealth(int quantity)
     {
@@ -59,12 +61,12 @@ public class EntityHealth : MonoBehaviour,IHasHealth
         if (previousHealth == health) return;
 
         OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = health - previousHealth });
-        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { health = health, quantity = health - previousHealth, entity = this });
+        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , health = health, quantity = health - previousHealth});
 
         if (IsAlive()) return;
 
         OnEntityDeath?.Invoke(this, EventArgs.Empty);
-        OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entity = this });
+        OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entityHealth = this });
     }
 
     public void TakeDamage(int quantity)
@@ -76,7 +78,7 @@ public class EntityHealth : MonoBehaviour,IHasHealth
         if (previousHealth == health) return;
 
         OnHealhDecreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = previousHealth - health });
-        OnAnyHealhDecreased?.Invoke(this, new OnAnyHealthEventArgs { health = health, quantity = previousHealth - health, entity = this });
+        OnAnyHealhDecreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , health = health, quantity = previousHealth - health});
     }
 
     public bool IsAlive() => health > 0;

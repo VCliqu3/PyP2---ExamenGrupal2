@@ -6,6 +6,11 @@ using UnityEditor.PackageManager;
 
 public abstract class EntityPositioning : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private Entity entity;
+
+    public Entity Entity => entity;
+
     private Node position;
     private NodePosition nodePosition;
 
@@ -24,11 +29,11 @@ public abstract class EntityPositioning : MonoBehaviour
 
     public class OnAnyPositionEventArgs : EventArgs
     {
+        public EntityPositioning entityPositioning;
         public Node previousPosition;
         public Node newPosition;
         public NodePosition previousNodePosition;
         public NodePosition newNodePosition;
-        public EntityPositioning entity;
     }
 
     private void Update()
@@ -57,7 +62,7 @@ public abstract class EntityPositioning : MonoBehaviour
         this.nodePosition = nodePosition;
 
         OnPositionSet?.Invoke(this, new OnPositionEventArgs { previousPosition = previousPosition, newPosition = position , previousNodePosition = previousNodePosition, newNodePosition = nodePosition});
-        OnAnyPositionSet?.Invoke(this, new OnAnyPositionEventArgs { previousPosition = previousPosition, newPosition = position, previousNodePosition = previousNodePosition, newNodePosition = nodePosition, entity = this });
+        OnAnyPositionSet?.Invoke(this, new OnAnyPositionEventArgs { entityPositioning = this , previousPosition = previousPosition, newPosition = position, previousNodePosition = previousNodePosition, newNodePosition = nodePosition});
     }
 }
 
