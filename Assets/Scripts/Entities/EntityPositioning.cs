@@ -22,6 +22,7 @@ public abstract class EntityPositioning : MonoBehaviour
         public Node previousPosition;
         public Node newPosition;
         public EntityPositioning entity;
+
     }
 
     public Node GetPosition() => position;

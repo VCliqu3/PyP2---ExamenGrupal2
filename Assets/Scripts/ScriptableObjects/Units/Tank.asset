@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7bd7674966171459d88c202204a1e4, type: 3}
   m_Name: Tank
   m_EditorClassIdentifier: 
+  entityType: 1
   entityName: Tank
   health: 30
   price: 40
+  unitType: 1
   damage: 20
-  speed: 2
+  attackSpeed: 0.3
+  speed: 0.66

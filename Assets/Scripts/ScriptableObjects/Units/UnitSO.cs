@@ -6,5 +6,6 @@ using UnityEngine;
 public class UnitSO : EntitySO
 {
     [Range(0, 50)] public int damage;
-    [Range(1, 3)] public int speed;
+    [Range(0.2f, 1f)] public float attackSpeed; //Attacks per second
+    [Range(0.2f, 1f)] public float speed; //Nodes per second
 }

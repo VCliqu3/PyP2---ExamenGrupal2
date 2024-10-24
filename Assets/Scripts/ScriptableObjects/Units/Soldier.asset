@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7bd7674966171459d88c202204a1e4, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
+  entityType: 1
   entityName: Soldier
   health: 15
   price: 20
+  unitType: 0
   damage: 10
-  speed: 1
+  attackSpeed: 0.5
+  speed: 0.33
