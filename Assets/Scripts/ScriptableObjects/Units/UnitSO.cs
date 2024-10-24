@@ -10,4 +10,5 @@ public class UnitSO : EntitySO
     [Range(0.5f, 5f)] public float projectileSpeed;
     [Space]
     [Range(0.2f, 1f)] public float speed; //Nodes per second
+    [Range(0.1f, 100f)] public float smoothMoveFactor;
 }

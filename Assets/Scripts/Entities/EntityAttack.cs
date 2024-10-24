@@ -35,7 +35,9 @@ public abstract class EntityAttack : MonoBehaviour
 
     protected void Start()
     {
-        MaxTimer();
+        SetAttackCooldown();
+        SetAttackState(State.NotAttacking);
+        ResetTimer();
     }
 
     protected void Update()
@@ -94,7 +96,17 @@ public abstract class EntityAttack : MonoBehaviour
     protected abstract bool CanAttack();
     protected abstract bool CanAttackEntity(Entity entity);
 
-    protected abstract Entity FindTarget();
+    protected Entity FindTarget()
+    {
+        List<Entity> potentialTargetsInNode = entity.EntityPositioning.GetPosition().GetAllEntitiesInNode();
+
+        foreach(Entity potentialTarget in potentialTargetsInNode)
+        {
+            if(CanAttackEntity(potentialTarget)) return potentialTarget;
+        }
+
+        return null;
+    }
 
     protected abstract void Attack(Entity entity);
 

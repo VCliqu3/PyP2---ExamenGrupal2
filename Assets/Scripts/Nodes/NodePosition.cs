@@ -6,42 +6,45 @@ public class NodePosition : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Node node;
-    [SerializeField] private Transform entityTransform;
+    [SerializeField] private Entity entity;
 
     public Node Node => node;
-    public Transform EntityTransform => entityTransform;
+    public Entity Entity => entity;
 
     private void OnEnable()
     {
         EntityPositioning.OnAnyPositionSet += EntityPositioning_OnAnyPositionSet;
+        EntityHealth.OnAnyEntityDeath += EntityHealth_OnAnyEntityDeath;
     }
 
     private void OnDisable()
     {
         EntityPositioning.OnAnyPositionSet -= EntityPositioning_OnAnyPositionSet;
+        EntityHealth.OnAnyEntityDeath -= EntityHealth_OnAnyEntityDeath;
     }
 
-    public bool HasEntity() => entityTransform != null;
-    public void SetEntityTransform(Transform entityTransform)
+    public bool HasEntity() => entity != null;
+    public void SetEntity(Entity entity)
     {
-        this.entityTransform = entityTransform;
-        entityTransform.SetParent(transform);
+        this.entity = entity;
+        entity.transform.SetParent(transform);
     }
 
-    public void ClearEntityTransform()
+    public void ClearEntity()
     {
-        if (entityTransform == null) return;
+        if (entity == null) return;
 
-        entityTransform.SetParent(null);
-        entityTransform = null;
+        if(entity.transform.parent == this) entity.transform.SetParent(null);
+
+        entity = null;
     }
 
     private void CheckLeavePosition(EntityPositioning entityPositioning, NodePosition nodePosition)
     {
         if (nodePosition != this) return;
-        if (entityPositioning.transform != entityTransform) return;
+        if (entityPositioning.Entity != entity) return;
 
-        ClearEntityTransform();
+        ClearEntity();
     }
 
     private void CheckArrivePosition(EntityPositioning entityPositioning, NodePosition nodePosition)
@@ -49,12 +52,24 @@ public class NodePosition : MonoBehaviour
         if (nodePosition != this) return;
         if (HasEntity()) return;
 
-        SetEntityTransform(entityPositioning.transform);
+        SetEntity(entityPositioning.Entity);
+    }
+
+    protected void CheckEntityDeath(EntityHealth entityHealth)
+    {
+        if (entityHealth.Entity != entity) return;
+
+        ClearEntity();
     }
 
     private void EntityPositioning_OnAnyPositionSet(object sender, EntityPositioning.OnAnyPositionEventArgs e)
     {
         CheckLeavePosition(e.entityPositioning, e.previousNodePosition);
         CheckArrivePosition(e.entityPositioning, e.newNodePosition);
+    }
+
+    private void EntityHealth_OnAnyEntityDeath(object sender, EntityHealth.OnAnyEntityDeathEventArgs e)
+    {
+        CheckEntityDeath(e.entityHealth);
     }
 }

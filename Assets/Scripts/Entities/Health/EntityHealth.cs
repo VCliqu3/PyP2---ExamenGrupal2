@@ -8,7 +8,8 @@ public class EntityHealth : MonoBehaviour,IHasHealth
     [Header("Components")]
     [SerializeField] private Entity entity;
 
-    private int health;
+    [Header("Debug")]
+    [SerializeField]private int health;
 
     public Entity Entity => entity;
 
@@ -62,18 +63,6 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
         OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = health - previousHealth });
         OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this, health = health, quantity = health - previousHealth });
-
-        if (IsAlive()) return;
-
-        KillUnit();
-    }
-
-    private void KillUnit()
-    {
-        OnEntityDeath?.Invoke(this, EventArgs.Empty);
-        OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entityHealth = this });
-
-        Destroy(gameObject);
     }
 
     public void TakeDamage(int quantity)
@@ -86,6 +75,18 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
         OnHealhDecreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = previousHealth - health });
         OnAnyHealhDecreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , health = health, quantity = previousHealth - health});
+
+        if (IsAlive()) return;
+
+        KillUnit();
+    }
+
+    private void KillUnit()
+    {
+        OnEntityDeath?.Invoke(this, EventArgs.Empty);
+        OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entityHealth = this });
+
+        Destroy(gameObject);
     }
 
     public bool IsAlive() => health > 0;

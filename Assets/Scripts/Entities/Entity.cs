@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Entity : MonoBehaviour
+public class Entity : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EntitySO entitySO;

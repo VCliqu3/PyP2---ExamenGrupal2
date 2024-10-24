@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaintenanceStructure : Structure
+public class MaintenanceStructureMaintenance : MonoBehaviour
 {
     [Header("Maintenance Structure Specifics")]
     [SerializeField] private MaintenanceStructureSO maintenanceStructureSO;

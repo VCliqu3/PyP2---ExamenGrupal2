@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnitMovement : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField] private Entity entity;
     [SerializeField] private EntityPositioning entityPositioning;
     [SerializeField] private EntityAttack entityAttack;
 
@@ -20,12 +21,16 @@ public class UnitMovement : MonoBehaviour
     public State MovementState => state;
     public enum State { NotMoving, Moving }
 
-    private const float SMOOTH_POSITION_FACTOR = 10f;
-    private const float NOT_MOVING_DISTANCE = 0.1f;
+    private const float NOT_MOVING_DISTANCE = 0.025f;
+
+    private float timer;
+    private float movementCooldown;
 
     private void Start()
     {
-        SetPositioningState(State.NotMoving);
+        SetMovementCooldown();
+        SetMovementState(State.NotMoving);
+        ResetTimer();
     }
 
     private void Update()
@@ -33,7 +38,7 @@ public class UnitMovement : MonoBehaviour
         HandleMovement();
     }
 
-    private void SetPositioningState(State state) => this.state = state;
+    private void SetMovementState(State state) => this.state = state;
 
     private void HandleMovement()
     {
@@ -51,43 +56,68 @@ public class UnitMovement : MonoBehaviour
 
     private void NotMovingLogic()
     {
-        if (NodePosition == null) return;
-
-        float distanceToNodePosition = Vector3.Distance(transform.position, NodePosition.transform.position);
-
-        if (distanceToNodePosition > NOT_MOVING_DISTANCE)
+        if (NodePosition == null)
         {
-            SetPositioningState(State.Moving);
+            ResetTimer();
+            return;
         }
+
+        if (!CanMove())
+        {
+            ResetTimer();
+            return;
+        }
+
+        if (MovementOnCooldown())
+        {
+            timer += Time.deltaTime;
+            return;
+        }
+
+        TryMove();
+    }
+
+    private void TryMove()
+    {
+        ResetTimer();
+
+        NodePosition nextNodePosition = entityPositioning.GetNextNodePosition();
+
+        if (nextNodePosition == null) return; //No Available Position
+
+        entityPositioning.SetPosition(nextNodePosition.Node, nextNodePosition);
+
+        SetMovementState(State.Moving);
     }
 
     private void MovingLogic()
     {
         if (NodePosition == null) return;
 
-        transform.position = Vector3.Lerp(transform.position, NodePosition.transform.position, SMOOTH_POSITION_FACTOR * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, NodePosition.transform.position, unitSO.smoothMoveFactor* Time.deltaTime);
 
         float distanceToNodePosition = Vector3.Distance(transform.position, NodePosition.transform.position);
 
         if (distanceToNodePosition <= NOT_MOVING_DISTANCE)
         {
-            SetPositioningState(State.NotMoving);
+            SetMovementState(State.NotMoving);
+            ResetTimer();
         }
     }
 
     private bool CanMove()
     {
         if (entityAttack.AttackState == EntityAttack.State.Attacking) return false;
+        if (entity.IsAlied && entityPositioning.CheckCurrentNodeHasEnemyUnits()) return false;
+        if (!entity.IsAlied && entityPositioning.CheckCurrentNodeHasAliedUnits()) return false;
+
         return true;
     }
 
-    private bool CheckCurrentNodeHasAliedUnits()
-    {
-        return false;
-    }
+    private void SetMovementCooldown() => movementCooldown = 1/unitSO.speed;
+    private void ResetTimer() => timer = 0f;
+    private void MaxTimer() => timer = movementCooldown;
+    private bool MovementOnCooldown() => timer < movementCooldown;
 
-    private bool CheckCurrentNodeHasEnemyUnits()
-    {
-        return false;
-    }
+
 }

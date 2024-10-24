@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectorStructure : Structure
+public class CollectorStructureCollection : MonoBehaviour
 {
     [Header("Collector Structure Specifics")]
     [SerializeField] private CollectorStructureSO collectorStructureSO;

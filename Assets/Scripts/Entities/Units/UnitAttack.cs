@@ -20,12 +20,6 @@ public abstract class UnitAttack : EntityAttack
         return true;
     }
 
-    protected override Entity FindTarget()
-    {
-        //CheckForEntities in current node
-        return null;
-    }
-
     protected override void Attack(Entity entity)
     {
         Transform projectileTransform = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);

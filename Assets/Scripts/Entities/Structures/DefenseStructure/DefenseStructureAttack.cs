@@ -23,12 +23,6 @@ public class DefenseStructureAttack : EntityAttack
         return true;
     }
 
-    protected override Entity FindTarget()
-    {
-        //CheckForEntities in any node
-        return null;
-    }
-
     protected override void Attack(Entity entity)
     {
         Transform projectileTransform = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
