@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition2
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -453,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitPosition2
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.75
@@ -526,6 +534,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StructurePosition3
       objectReference: {fileID: 0}
+    - target: {fileID: 2259125765588540519, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.25
@@ -599,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StructurePosition2
       objectReference: {fileID: 0}
+    - target: {fileID: 2259125765588540519, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -672,6 +688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitPosition1
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.75
@@ -745,6 +765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition5
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -818,6 +842,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitPosition3
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 46e4573411cea0d44b2b499fa5c927e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.75
@@ -891,6 +919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition1
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.25
@@ -964,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition3
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -1037,6 +1073,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition6
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
@@ -1110,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitEnemyPosition1
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.75
@@ -1183,6 +1227,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition1
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -1256,6 +1304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition2
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.25
@@ -1329,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitEnemyPosition2
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.75
@@ -1402,6 +1458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition5
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.25
@@ -1475,6 +1535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition4
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.25
@@ -1548,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitEnemyPosition6
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a065a66df00b5584c95b0792dbc981cb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.25
@@ -1621,6 +1689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StructurePosition1
       objectReference: {fileID: 0}
+    - target: {fileID: 2259125765588540519, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 86ba8a814c96cd34a9f8db138226e172, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.25
@@ -1694,6 +1766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerealUnitEnemyPosition3
       objectReference: {fileID: 0}
+    - target: {fileID: 3459390759276169568, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: a51a1b7193cea934da4a2bdfe22d7781, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.75
@@ -1767,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition3
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.25
@@ -1840,6 +1920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GroundUnitPosition4
       objectReference: {fileID: 0}
+    - target: {fileID: 4348120508637313607, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
+      propertyPath: node
+      value: 
+      objectReference: {fileID: 315726289721967847}
     - target: {fileID: 8196163230491561937, guid: 2505daa526fe1f5498b7c11564f8f3ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5

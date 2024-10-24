@@ -17,7 +17,6 @@ public abstract class EntityPositioning : MonoBehaviour
     public event EventHandler<OnPositionEventArgs> OnPositionSet;
     public static event EventHandler<OnAnyPositionEventArgs> OnAnyPositionSet;
 
-    private const float smoothPositionTarget = 10f;
 
     public class OnPositionEventArgs : EventArgs
     {
@@ -34,17 +33,6 @@ public abstract class EntityPositioning : MonoBehaviour
         public Node newPosition;
         public NodePosition previousNodePosition;
         public NodePosition newNodePosition;
-    }
-
-    private void Update()
-    {
-        HandlePositionMovement();
-    }
-
-    private void HandlePositionMovement()
-    {
-        if (nodePosition == null) return;
-        transform.position = Vector3.Lerp(transform.position, nodePosition.transform.position, smoothPositionTarget * Time.deltaTime);
     }
 
     public Node GetPosition() => position;

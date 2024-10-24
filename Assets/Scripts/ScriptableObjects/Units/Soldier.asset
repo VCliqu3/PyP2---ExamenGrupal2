@@ -16,7 +16,7 @@ MonoBehaviour:
   entityName: Soldier
   health: 15
   price: 20
-  unitType: 0
   damage: 10
   attackSpeed: 0.5
+  projectileSpeed: 2
   speed: 0.33

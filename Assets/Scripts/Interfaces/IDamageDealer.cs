@@ -5,5 +5,5 @@ using UnityEngine;
 public interface IDamageDealer
 {
     public int GetDamage();
-    public void DealDamage(IDamageDealer iHasHealth);
+    public void DealDamage(IHasHealth iHasHealth);
 }

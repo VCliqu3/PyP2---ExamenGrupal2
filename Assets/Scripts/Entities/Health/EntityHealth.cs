@@ -61,12 +61,19 @@ public class EntityHealth : MonoBehaviour,IHasHealth
         if (previousHealth == health) return;
 
         OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = health - previousHealth });
-        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , health = health, quantity = health - previousHealth});
+        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this, health = health, quantity = health - previousHealth });
 
         if (IsAlive()) return;
 
+        KillUnit();
+    }
+
+    private void KillUnit()
+    {
         OnEntityDeath?.Invoke(this, EventArgs.Empty);
         OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entityHealth = this });
+
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int quantity)

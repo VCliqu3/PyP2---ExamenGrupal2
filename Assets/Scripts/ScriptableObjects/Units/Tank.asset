@@ -18,4 +18,5 @@ MonoBehaviour:
   price: 40
   damage: 20
   attackSpeed: 0.3
+  projectileSpeed: 1.25
   speed: 0.66
