@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8196163230491561937}
   - component: {fileID: 4348120508637313607}
   m_Layer: 0
-  m_Name: GroundUnitPosition
+  m_Name: GroundUnitEnemyPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 452101321704425891}
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a227a407fd237df4090fab9a78fe02cf, type: 2}
+  - {fileID: 2100000, guid: b118fc8f628e9d8499df677496bf20e8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

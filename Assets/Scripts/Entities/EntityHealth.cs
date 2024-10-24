@@ -16,6 +16,9 @@ public class EntityHealth : MonoBehaviour,IHasHealth
     public static event EventHandler<OnAnyHealthEventArgs> OnAnyHealhIncreased;
     public static event EventHandler<OnAnyHealthEventArgs> OnAnyHealhDecreased;
 
+    public event EventHandler OnEntityDeath;
+    public static event EventHandler<OnAnyEntityDeathEventArgs> OnAnyEntityDeath;
+
     public class OnHealthEventArgs : EventArgs
     {
         public int health;
@@ -26,6 +29,11 @@ public class EntityHealth : MonoBehaviour,IHasHealth
     {
         public int health;
         public int quantity;
+        public EntityHealth entity;
+    }
+
+    public class OnAnyEntityDeathEventArgs : EventArgs
+    {
         public EntityHealth entity;
     }
 
@@ -52,6 +60,11 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
         OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = health - previousHealth });
         OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { health = health, quantity = health - previousHealth, entity = this });
+
+        if (IsAlive()) return;
+
+        OnEntityDeath?.Invoke(this, EventArgs.Empty);
+        OnAnyEntityDeath?.Invoke(this, new OnAnyEntityDeathEventArgs { entity = this });
     }
 
     public void TakeDamage(int quantity)
