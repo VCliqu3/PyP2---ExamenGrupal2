@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private string victoryScene;
     [SerializeField] private string defeatScene;
-    [SerializeField] private GameSettingsSO gameSettingsSO;
-
-    public GameSettingsSO GameSettings => gameSettingsSO;
 
     private void OnEnable()
     {
