@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class NodeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("Components")]
+    [SerializeField] private List<Node> nodes;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<Node> Nodes => nodes;
 }
