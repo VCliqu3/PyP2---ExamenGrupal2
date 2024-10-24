@@ -24,6 +24,15 @@ public abstract class EntityAttack : MonoBehaviour
     protected float timer;
     protected float attackCooldown;
 
+    protected void OnEnable()
+    {
+        EntityHealth.OnAnyEntityDeath += EntityHealth_OnAnyEntityDeath;
+    }
+    protected void OnDisable()
+    {
+        EntityHealth.OnAnyEntityDeath -= EntityHealth_OnAnyEntityDeath;
+    }
+
     protected void Start()
     {
         MaxTimer();
@@ -52,6 +61,8 @@ public abstract class EntityAttack : MonoBehaviour
 
     protected void NotAttackingLogic()
     {
+        if (!CanAttack()) return;
+
         Entity target = FindTarget();
 
         if (target == null) return;
@@ -64,6 +75,12 @@ public abstract class EntityAttack : MonoBehaviour
 
     protected void AttackingLogic()
     {
+        if (!CanAttack())
+        {
+            SetAttackState(State.NotAttacking);
+            return;
+        }
+
         if (AttackOnCooldown())
         {
             timer += Time.deltaTime;
@@ -74,6 +91,7 @@ public abstract class EntityAttack : MonoBehaviour
         ResetTimer();
     }
 
+    protected abstract bool CanAttack();
     protected abstract bool CanAttackEntity(Entity entity);
 
     protected abstract Entity FindTarget();
@@ -88,4 +106,19 @@ public abstract class EntityAttack : MonoBehaviour
     protected void ResetTimer() => timer = 0;
     protected void MaxTimer() => timer = attackCooldown;
     protected bool AttackOnCooldown() => timer < attackCooldown;
+
+    protected void CheckTargetDeath(EntityHealth entityHealth)
+    {
+        if(entityHealth.Entity != currentTarget) return;
+
+        ClearCurrentTarget();
+        SetAttackState(State.NotAttacking);
+    }
+
+    #region EntityHealth Subscriptions
+    private void EntityHealth_OnAnyEntityDeath(object sender, EntityHealth.OnAnyEntityDeathEventArgs e)
+    {
+        CheckTargetDeath(e.entityHealth);
+    }
+    #endregion
 }

@@ -8,6 +8,13 @@ public class HelicopterAttack : UnitAttack
     {
         if (entity.IsAlied == entityToAttack.IsAlied) return false;
 
+        UnitMovement unitMovement = entity.GetComponent<UnitMovement>();
+
+        if (unitMovement != null)
+        {
+            if (unitMovement.MovementState == UnitMovement.State.Moving) return false;
+        }
+
         if (entity.EntitySO.entityType == EntityType.Structure) return true;
         if (entity.EntitySO.entityType == EntityType.Tank) return true;
 

@@ -11,6 +11,11 @@ public class DefenseStructureAttack : EntityAttack
 
     protected override void SetAttackCooldown() => attackCooldown = 1 / defenseStructureSO.attackSpeed;
 
+    protected override bool CanAttack()
+    {
+        return true;
+    }
+
     protected override bool CanAttackEntity(Entity entityToAttack)
     {
         if (entity.IsAlied == entityToAttack.IsAlied) return false;
