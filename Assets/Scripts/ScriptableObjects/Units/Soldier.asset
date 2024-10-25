@@ -20,3 +20,4 @@ MonoBehaviour:
   attackSpeed: 0.5
   projectileSpeed: 2
   speed: 0.33
+  smoothMoveFactor: 2

@@ -57,8 +57,8 @@ public class NodeManager : MonoBehaviour
 
         foreach (Node node in nodes)
         {
-            index++;
             if (node == indexedNode) return index;
+            index++;
         }
 
         return index;

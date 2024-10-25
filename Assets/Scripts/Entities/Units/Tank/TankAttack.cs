@@ -8,8 +8,15 @@ public class TankAttack : UnitAttack
     {
         if (entity.IsAlied == entityToAttack.IsAlied) return false;
 
-        if (entity.EntitySO.entityType == EntityType.Structure) return true;
-        if (entity.EntitySO.entityType == EntityType.Soldier) return true;
+        UnitMovement unitMovement = entityToAttack.GetComponent<UnitMovement>();
+
+        if (unitMovement != null)
+        {
+            if (unitMovement.MovementState == UnitMovement.State.Moving) return false;
+        }
+
+        if (entityToAttack.EntitySO.entityType == EntityType.Structure) return true;
+        if (entityToAttack.EntitySO.entityType == EntityType.Soldier) return true;
 
         return false;
     }

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3dacea00bc06af409b7a372379ecc4a, type: 3}
   m_Name: CollectorStructureSO
   m_EditorClassIdentifier: 
+  entityType: 0
   entityName: Collector Structure
   health: 200
   price: 80
-  moneyPerTurn: 5
+  moneyPerCollection: 5
+  collectionTime: 10

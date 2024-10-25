@@ -271,8 +271,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1618301848}
   - {fileID: 832644489}
+  - {fileID: 1618301848}
   - {fileID: 1013695707}
   m_Father: {fileID: 604313689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tu civilizaci\xF3n ha colapsado"
+  m_text: Te has quedado sin estructuras
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

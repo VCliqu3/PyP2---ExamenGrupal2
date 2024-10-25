@@ -34,17 +34,82 @@ public class Node : MonoBehaviour
     public bool HasAvailableGroundEnemyPositions() => GetAvailableGroundEnemyPositions().Count > 0;
     public bool HasAvailableAerealEnemyPositions() => GetAvailableAerealEnemyPositions().Count > 0;
 
-    public bool GetRandomStructurePosition() => GetRandomPositionFromList(structurePositions);
-    public bool GetRandomGroundAliedPosition() => GetRandomPositionFromList(groundAliedPositions);
-    public bool GetRandomAerealAliedPosition() => GetRandomPositionFromList(aerealAliedPositions);
-    public bool GetRandomGroundEnemyPosition() => GetRandomPositionFromList(groundEnemyPositions);
-    public bool GetRandomAerealEnemyPosition() => GetRandomPositionFromList(aerealEnemyPositions);
+    public NodePosition GetRandomAvailableStructurePosition() => GetRandomPositionFromList(GetAvailablePositionsFromList(structurePositions));
+    public NodePosition GetRandomAvailableGroundAliedPosition() => GetRandomPositionFromList(GetAvailablePositionsFromList(groundAliedPositions));
+    public NodePosition GetRandomAvailableAerealAliedPosition() => GetRandomPositionFromList(GetAvailablePositionsFromList(aerealAliedPositions));
+    public NodePosition GetRandomAvailableGroundEnemyPosition() => GetRandomPositionFromList(GetAvailablePositionsFromList(groundEnemyPositions));
+    public NodePosition GetRandomAvailableAerealEnemyPosition() => GetRandomPositionFromList(GetAvailablePositionsFromList(aerealEnemyPositions));
 
-    public bool GetFirstStructurePosition() => GetFirstPositionFromList(structurePositions);
-    public bool GetFirstGroundAliedPosition() => GetFirstPositionFromList(groundAliedPositions);
-    public bool GetFirstAerealAliedPosition() => GetFirstPositionFromList(aerealAliedPositions);
-    public bool GetFirstGroundEnemyPosition() => GetFirstPositionFromList(groundEnemyPositions);
-    public bool GetFirstAerealEnemyPosition() => GetFirstPositionFromList(aerealEnemyPositions);
+    public NodePosition GetFirstAvailableStructurePosition() => GetFirstPositionFromList(GetAvailablePositionsFromList(structurePositions));
+    public NodePosition GetFirstAvailableGroundAliedPosition() => GetFirstPositionFromList(GetAvailablePositionsFromList(groundAliedPositions));
+    public NodePosition GetFirstAvailableAerealAliedPosition() => GetFirstPositionFromList(GetAvailablePositionsFromList(aerealAliedPositions));
+    public NodePosition GetFirstAvailableGroundEnemyPosition() => GetFirstPositionFromList(GetAvailablePositionsFromList(groundEnemyPositions));
+    public NodePosition GetFirstAvailableAerealEnemyPosition() => GetFirstPositionFromList(GetAvailablePositionsFromList(aerealEnemyPositions));
+
+    public bool HasStructures() => ListHasUnits(structurePositions);
+    public bool HasAliedGroundUnits() => ListHasUnits(groundAliedPositions);
+    public bool HasAliedAerealUnits() => ListHasUnits(aerealAliedPositions);
+    public bool HasEnemyGroundUnits() => ListHasUnits(groundEnemyPositions);
+    public bool HasEnemyAerealUnits() => ListHasUnits(aerealEnemyPositions);
+
+    public List<Entity> GetAllEntitiesInNode()
+    {
+        List<Entity> entities = new List<Entity>();
+
+        entities.AddRange(GetAllStructures());
+        entities.AddRange(GetAllGroundAlliedUnits());
+        entities.AddRange(GetAllAerealAliedUnits());
+        entities.AddRange(GetAllGroundEnemyUnits());
+        entities.AddRange(GetAllAerealEnemyUnits());
+
+        return entities;
+    }
+
+    public List<Entity> GetAllStructures() => GetAllEntitiesInList(structurePositions);
+    public List<Entity> GetAllGroundAlliedUnits() => GetAllEntitiesInList(groundAliedPositions);
+    public List<Entity> GetAllAerealAliedUnits() => GetAllEntitiesInList(aerealAliedPositions);
+    public List<Entity> GetAllGroundEnemyUnits() => GetAllEntitiesInList(groundEnemyPositions);
+    public List<Entity> GetAllAerealEnemyUnits() => GetAllEntitiesInList(aerealEnemyPositions);
+
+    public List<Entity> GetAllEntitiesInList(List<NodePosition> nodePositions)
+    {
+        List<Entity> entities = new List<Entity>();
+
+        foreach (NodePosition nodePosition in nodePositions)
+        {
+            if(nodePosition.HasEntity()) entities.Add(nodePosition.Entity);
+        }
+
+        return entities;
+    }
+
+    public bool HasAliedUnits()
+    {
+        if (HasStructures()) return true;
+        if(HasAliedGroundUnits()) return true;
+        if(HasAliedAerealUnits()) return true;
+
+        return false;
+    }
+
+    public bool HasEnemyUnits()
+    {
+        if (HasEnemyGroundUnits()) return true;
+        if (HasEnemyAerealUnits()) return true;
+
+        return false;
+    }
+
+    public bool ListHasUnits(List<NodePosition> nodePositions)
+    {
+        foreach(NodePosition nodePosition in nodePositions)
+        {
+            if (nodePosition.HasEntity()) return true;
+        }
+
+        return false;
+    }
+
 
     private List<NodePosition> GetAvailablePositionsFromList(List<NodePosition> potentialPositions)
     {
