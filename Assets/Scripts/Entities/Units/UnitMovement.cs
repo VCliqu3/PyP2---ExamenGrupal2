@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -16,15 +17,24 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private State state;
 
     public UnitSO UnitSO => unitSO;
+    public Entity Entity => entity;
     private NodePosition NodePosition => entityPositioning.GetNodePosition();
 
     public State MovementState => state;
     public enum State { NotMoving, Moving }
 
+    public static event EventHandler<OnUnitEndMovementEventArgs> OnUnitEndMovement; 
+
     private const float NOT_MOVING_DISTANCE = 0.025f;
 
     private float timer;
     private float movementCooldown;
+
+    public class OnUnitEndMovementEventArgs : EventArgs
+    {
+        public UnitMovement unitMovement;
+        public NodePosition nodePosition;
+    }
 
     private void Start()
     {
@@ -102,6 +112,8 @@ public class UnitMovement : MonoBehaviour
         {
             SetMovementState(State.NotMoving);
             ResetTimer();
+
+            OnUnitEndMovement?.Invoke(this, new OnUnitEndMovementEventArgs { unitMovement = this, nodePosition = NodePosition });
         }
     }
 

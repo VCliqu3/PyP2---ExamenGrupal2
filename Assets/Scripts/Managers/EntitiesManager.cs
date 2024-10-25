@@ -54,8 +54,21 @@ public class EntitiesManager : MonoBehaviour
         }
     }
 
-    private int GetAllyEntitiesCount() => allyEntities.Count;
-    private int GetEnemyEntitiesCount() => enemyEntities.Count;
+    public int GetAllyEntitiesCount() => allyEntities.Count;
+    public int GetEnemyEntitiesCount() => enemyEntities.Count;
+
+    public int GetAllyStructuresCount()
+    {
+        int count = 0;
+
+        foreach (Entity entity in allyEntities)
+        {
+            if(entity.EntitySO.entityType == EntityType.Structure) count++;
+        }
+
+        return count;
+    }
+
 
     public bool HasAllyEntities() => allyEntities.Count > 0;
     public bool HasEnemyEntities() => enemyEntities.Count > 0;

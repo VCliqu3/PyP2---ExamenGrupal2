@@ -9,7 +9,7 @@ public class EntityHealth : MonoBehaviour,IHasHealth
     [SerializeField] private Entity entity;
 
     [Header("Debug")]
-    [SerializeField]private int health;
+    [SerializeField] private int health;
 
     public Entity Entity => entity;
 
@@ -24,6 +24,7 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
     public class OnHealthEventArgs : EventArgs
     {
+        public int maxHealth;
         public int health;
         public int quantity;
     }
@@ -31,6 +32,7 @@ public class EntityHealth : MonoBehaviour,IHasHealth
     public class OnAnyHealthEventArgs : EventArgs
     {
         public EntityHealth entityHealth;
+        public int maxHealth;
         public int health;
         public int quantity;
     }
@@ -61,8 +63,8 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
         if (previousHealth == health) return;
 
-        OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = health - previousHealth });
-        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this, health = health, quantity = health - previousHealth });
+        OnHealhIncreased?.Invoke(this, new OnHealthEventArgs { maxHealth = GetMaxHealth(), health = health, quantity = health - previousHealth });
+        OnAnyHealhIncreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this, maxHealth = GetMaxHealth(), health = health, quantity = health - previousHealth });
     }
 
     public void TakeDamage(int quantity)
@@ -73,8 +75,8 @@ public class EntityHealth : MonoBehaviour,IHasHealth
 
         if (previousHealth == health) return;
 
-        OnHealhDecreased?.Invoke(this, new OnHealthEventArgs { health = health, quantity = previousHealth - health });
-        OnAnyHealhDecreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , health = health, quantity = previousHealth - health});
+        OnHealhDecreased?.Invoke(this, new OnHealthEventArgs { maxHealth = GetMaxHealth(), health = health, quantity = previousHealth - health });
+        OnAnyHealhDecreased?.Invoke(this, new OnAnyHealthEventArgs { entityHealth = this , maxHealth = GetMaxHealth(), health = health, quantity = previousHealth - health});
 
         if (IsAlive()) return;
 
