@@ -6,7 +6,6 @@ public class StartManager : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private GameSettingsSO gameSettingsSO;
-    [SerializeField] private Transform maintenanceStructurePrefab;
 
     private void Start()
     {
@@ -19,23 +18,8 @@ public class StartManager : MonoBehaviour
 
         foreach(NodePosition position in maintenanceStructurePositions)
         {
-            InstantiateMaintenanceStructure(position);
+            EntitySpawnerUtility.Instance.TryInstantiateMaintenanceStructureInNodePosition(position);
         }
-    }
-
-    private void InstantiateMaintenanceStructure(NodePosition nodePosition)
-    {
-        Transform maintenanceStructureTransform = Instantiate(maintenanceStructurePrefab,nodePosition.transform.position, nodePosition.transform.rotation);
-
-        EntityPositioning entityPositioning = maintenanceStructureTransform.GetComponent<EntityPositioning>();
-
-        if(entityPositioning == null)
-        {
-            Debug.Log("Instantiated Maintenance Structure does not contain an EntityPositioning component");
-            return;
-        }
-
-        entityPositioning.SetPosition(nodePosition.Node, nodePosition);
     }
 
     private List<NodePosition> GetInitialMaintenanceStructuresNodePositions()

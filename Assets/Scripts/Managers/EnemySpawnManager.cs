@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -12,8 +13,15 @@ public class EnemySpawnManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private int waveNumber;
 
+    public static event EventHandler<OnWaveEventArgs> OnWaveStartSpawn;
+    public static event EventHandler<OnWaveEventArgs> OnWaveEndSpawn;
+
     public int WaveNumber => waveNumber;
-    private bool spawnEnabled;
+
+    public class OnWaveEventArgs : EventArgs
+    {
+        public int waveNumber;
+    }
 
     private void OnEnable()
     {
@@ -53,18 +61,27 @@ public class EnemySpawnManager : MonoBehaviour
 
     private void InitializeVariables()
     {
-        spawnEnabled = false;
         waveNumber = 0;
-    }
-
-    private void StartEnemySpawn()
-    {
-        spawnEnabled = true;
     }
 
     private void SpawnNextWave()
     {
+        waveNumber++;
+        int numberOfEnemies = GetFibonacciTerm(waveNumber + 1);
 
+        OnWaveStartSpawn?.Invoke(this, new OnWaveEventArgs { waveNumber = waveNumber });
+
+        StartCoroutine(SpawnEnemiesCoroutine(numberOfEnemies));
+    }
+
+    private IEnumerator SpawnEnemiesCoroutine(int numberOfEnemies)
+    {
+        for(int i=0; i<numberOfEnemies; i++)
+        {
+            yield return new WaitForSeconds(gameSettingsSO.enemySpawnInterval);
+
+
+        }
     }
 
     private int GetFibonacciTerm(int termNumber)
@@ -90,7 +107,7 @@ public class EnemySpawnManager : MonoBehaviour
     #region Subscriptions
     private void StartCombatUI_OnStartCombat(object sender, System.EventArgs e)
     {
-        StartEnemySpawn();
+        SpawnNextWave();
     }
 
     private void EntitiesManager_OnAnyEnemyEntityRemoved(object sender, EntitiesManager.OnEntityEventArgs e)

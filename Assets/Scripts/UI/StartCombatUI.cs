@@ -8,8 +8,11 @@ public class StartCombatUI : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Button startCombatButton;
+    [SerializeField] private Animator startCombatUIAnimator;
 
     public static event EventHandler OnStartCombat;
+
+    private const string HIDE_TRIGGER = "Hide";
 
     private void Awake()
     {
@@ -21,5 +24,15 @@ public class StartCombatUI : MonoBehaviour
         startCombatButton.onClick.AddListener(StartCombat);
     }
 
-    private void StartCombat() => OnStartCombat?.Invoke(this, EventArgs.Empty);
+    private void StartCombat()
+    {
+        OnStartCombat?.Invoke(this, EventArgs.Empty);
+
+        HideAnimation();
+    }
+
+    private void HideAnimation()
+    {
+        startCombatUIAnimator.SetTrigger(HIDE_TRIGGER);
+    }
 }
