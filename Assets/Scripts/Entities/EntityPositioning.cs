@@ -22,6 +22,7 @@ public class EntityPositioning : MonoBehaviour
 
     private void Start()
     {
+        if (!testPosition) return;
         SetPosition(testPosition.Node, testPosition);
     }
 

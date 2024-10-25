@@ -7,6 +7,6 @@ using UnityEngine;
 public class GameSettingsSO : ScriptableObject
 {
     [Header("Settings")]
-    [Range(1, 3)] public int startingMaintenanceStructures;
+    [Range(1, 9)] public int startingMaintenanceStructures;
     [Range(50, 200)] public int startingGold;
 }

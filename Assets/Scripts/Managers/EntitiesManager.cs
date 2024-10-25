@@ -21,6 +21,8 @@ public class EntitiesManager : MonoBehaviour
 
     public class OnEntityEventArgs : EventArgs
     {
+        public int allyEntitiesCount;
+        public int enemyEntitiesCount;
         public Entity entity;
     }
 
@@ -80,7 +82,7 @@ public class EntitiesManager : MonoBehaviour
 
         allyEntities.Add(entity);
 
-        OnAnyAllyEntityAdded?.Invoke(this, new OnEntityEventArgs { entity = entity });
+        OnAnyAllyEntityAdded?.Invoke(this, new OnEntityEventArgs { entity = entity, allyEntitiesCount = GetAllyEntitiesCount(), enemyEntitiesCount = GetEnemyEntitiesCount() });
     }
 
     private void CheckAddToEnemyEntitiesList(Entity entity)
@@ -90,7 +92,7 @@ public class EntitiesManager : MonoBehaviour
 
         enemyEntities.Add(entity);
 
-        OnAnyEnemyEntityAdded?.Invoke(this, new OnEntityEventArgs { entity = entity });
+        OnAnyEnemyEntityAdded?.Invoke(this, new OnEntityEventArgs { entity = entity, allyEntitiesCount = GetAllyEntitiesCount(), enemyEntitiesCount = GetEnemyEntitiesCount() });
     }
 
     private void CheckRemoveFromAllyEntitiesList(Entity entity)
@@ -100,7 +102,7 @@ public class EntitiesManager : MonoBehaviour
 
         allyEntities.Remove(entity);
 
-        OnAnyAllyEntityRemoved?.Invoke(this, new OnEntityEventArgs { entity = entity });
+        OnAnyAllyEntityRemoved?.Invoke(this, new OnEntityEventArgs { entity = entity, allyEntitiesCount = GetAllyEntitiesCount(), enemyEntitiesCount = GetEnemyEntitiesCount() });
     }
 
     private void CheckRemoveFromEnemyEntitiesList(Entity entity)
@@ -110,7 +112,7 @@ public class EntitiesManager : MonoBehaviour
 
         enemyEntities.Remove(entity);
 
-        OnAnyEnemyEntityRemoved?.Invoke(this, new OnEntityEventArgs { entity = entity });
+        OnAnyEnemyEntityRemoved?.Invoke(this, new OnEntityEventArgs { entity = entity, allyEntitiesCount = GetAllyEntitiesCount(), enemyEntitiesCount = GetEnemyEntitiesCount() });
     }
 
     #region Subscriptions
