@@ -14,3 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingMaintenanceStructures: 3
   startingGold: 50
+  enemySpawnInterval: 1
+  startingEnemySoldierGenerationOdds: 1
+  startingEnemyTankGenerationOdds: 0.66
+  startingEnemyHelicopterGenerationOdds: 0.33
+  finalEnemySoldierGenerationOdds: 0.33
+  finalEnemyTankGenerationOdds: 0.66
+  finalEnemyHelicopterGenerationOdds: 1
+  waveToReachFinalOdds: 5

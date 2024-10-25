@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Runtime.CompilerServices;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -76,12 +77,64 @@ public class EnemySpawnManager : MonoBehaviour
 
     private IEnumerator SpawnEnemiesCoroutine(int numberOfEnemies)
     {
+        Node enemyBase = NodeManager.Instance.GetEnemyBase();
+
         for(int i=0; i<numberOfEnemies; i++)
         {
             yield return new WaitForSeconds(gameSettingsSO.enemySpawnInterval);
 
-
+            EntityType chosenSpawnType = GetEnemyTypeToSpawn();
+            SpawnEnemyByType(chosenSpawnType, enemyBase);
         }
+
+        OnWaveEndSpawn?.Invoke(this, new OnWaveEventArgs { waveNumber = waveNumber });
+    }
+
+    private void SpawnEnemyByType(EntityType type, Node node)
+    {
+        switch (type)
+        {
+            case EntityType.Soldier:
+            default:
+                EntitySpawnerUtility.Instance.TryInstantiateEnemySoldierInNode(node);
+                break;
+            case EntityType.Tank:
+                EntitySpawnerUtility.Instance.TryInstantiateEnemyTankInNode(node);
+                break;
+            case EntityType.Helicopter:
+                EntitySpawnerUtility.Instance.TryInstantiateEnemyHelicopterInNode(node);
+                break;
+        }
+    }
+
+    private EntityType GetEnemyTypeToSpawn()
+    {
+        float soldierOdds = GetCurrentWaveOdd(gameSettingsSO.startingEnemySoldierGenerationOdds, gameSettingsSO.finalEnemySoldierGenerationOdds);
+        float tankOdds = GetCurrentWaveOdd(gameSettingsSO.startingEnemyTankGenerationOdds, gameSettingsSO.finalEnemyTankGenerationOdds);
+        float helicopterOdds = GetCurrentWaveOdd(gameSettingsSO.startingEnemyHelicopterGenerationOdds, gameSettingsSO.finalEnemyHelicopterGenerationOdds);
+
+        float oddsAccumulator = soldierOdds + tankOdds + helicopterOdds;
+
+        float randomOdd = UnityEngine.Random.Range(0f, oddsAccumulator);
+
+        if (randomOdd < soldierOdds)
+        {
+            return EntityType.Soldier;
+        }
+
+        if (randomOdd < soldierOdds + tankOdds)
+        {
+            return EntityType.Tank;
+        }
+
+        return EntityType.Helicopter;
+    }
+
+    private float GetCurrentWaveOdd(float startingOdd, float finalOdd)
+    {
+        float t = (waveNumber-1)/(gameSettingsSO.waveToReachFinalOdds-1);
+
+        return Mathf.Lerp(startingOdd, finalOdd, t);
     }
 
     private int GetFibonacciTerm(int termNumber)

@@ -13,12 +13,12 @@ public class GameSettingsSO : ScriptableObject
     [Range(1f, 2.5f)] public float enemySpawnInterval;
     [Space]
     [Range(0f, 1f)] public float startingEnemySoldierGenerationOdds;
-    [Range(0f, 1f)] public float startingTankSoldierGenerationOdds;
-    [Range(0f, 1f)] public float startingHelicopterSoldierGenerationOdds;
+    [Range(0f, 1f)] public float startingEnemyTankGenerationOdds;
+    [Range(0f, 1f)] public float startingEnemyHelicopterGenerationOdds;
     [Space]
     [Range(0f, 1f)] public float finalEnemySoldierGenerationOdds;
-    [Range(0f, 1f)] public float finalTankSoldierGenerationOdds;
-    [Range(0f, 1f)] public float finalHelicopterSoldierGenerationOdds;
+    [Range(0f, 1f)] public float finalEnemyTankGenerationOdds;
+    [Range(0f, 1f)] public float finalEnemyHelicopterGenerationOdds;
     [Space]
     [Range(5, 10)] public int waveToReachFinalOdds;
 }

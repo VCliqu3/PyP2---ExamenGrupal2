@@ -507,6 +507,7 @@ GameObject:
   - component: {fileID: 115227656}
   - component: {fileID: 115227657}
   - component: {fileID: 115227658}
+  - component: {fileID: 115227659}
   m_Layer: 5
   m_Name: HUD UI
   m_TagString: Untagged
@@ -577,6 +578,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startCombatButton: {fileID: 1001772497}
   startCombatUIAnimator: {fileID: 228658073}
+--- !u!114 &115227659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115227654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8dbb5297009738419e61e632c6d5b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wavesText: {fileID: 1796239509}
 --- !u!1 &195391602
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +629,7 @@ Transform:
   - {fileID: 1068838874}
   - {fileID: 1074196158}
   - {fileID: 366524054}
+  - {fileID: 1323792224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217517434
@@ -2714,7 +2729,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettingsSO: {fileID: 11400000, guid: 85f48eb84290a6c4ab4b263dd5e3b6da, type: 2}
-  maintenanceStructurePrefab: {fileID: 8529598743298600227, guid: a33cc9d6ba585ed47b2d6b46f276be7e, type: 3}
 --- !u!1 &1106310526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2938,6 +2952,59 @@ Transform:
   - {fileID: 40814241}
   m_Father: {fileID: 217517435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1323792223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1323792224}
+  - component: {fileID: 1323792225}
+  m_Layer: 0
+  m_Name: EntitySpawnerUtility
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1323792224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323792223}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 195391603}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1323792225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323792223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc40a0b3c271337478e1f7a8d65906a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aliedSoldierPrefab: {fileID: 7339067323812496962, guid: 84a47d43793e8424989b9df5a1a942af, type: 3}
+  aliedTankPrefab: {fileID: 7339067323812496962, guid: ed813dbaf47af514898db063a9ded85f, type: 3}
+  aliedHelicopterPrefab: {fileID: 7339067323812496962, guid: eeeb551ee98ba584f85a65a3a7204319, type: 3}
+  collectorStructurePrefab: {fileID: 8529598743298600227, guid: 99b4ca7efb10a2f439c47f1322ee08af, type: 3}
+  maintenanceStructurePrefab: {fileID: 8529598743298600227, guid: a33cc9d6ba585ed47b2d6b46f276be7e, type: 3}
+  defenseStructurePrefab: {fileID: 8529598743298600227, guid: 448f7a76120326d49a69d1be26e19b55, type: 3}
+  enemySoldierPrefab: {fileID: 7339067323812496962, guid: d24236f6fb1d281409edff550b1f80e1, type: 3}
+  enemyTankPrefab: {fileID: 7339067323812496962, guid: 004637e3e5e517840acb0d18ee5993b8, type: 3}
+  enemyHelicopterPrefab: {fileID: 7339067323812496962, guid: e8a548a6f34d2ba438948024e1ff4de6, type: 3}
 --- !u!1001 &1339779402
 PrefabInstance:
   m_ObjectHideFlags: 0
