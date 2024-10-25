@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d630a4d36919d4dac72818adb6893b, type: 3}
   m_Name: MaintenanceStructureSO
   m_EditorClassIdentifier: 
+  entityType: 0
   entityName: Maintenance Structure
   health: 200
   price: 60
-  unitsPerStructure: 3
+  capacity: 3

@@ -96,7 +96,7 @@ public abstract class EntityAttack : MonoBehaviour
     protected abstract bool CanAttack();
     protected abstract bool CanAttackEntity(Entity entity);
 
-    protected Entity FindTarget()
+    protected virtual Entity FindTarget()
     {
         List<Entity> potentialTargetsInNode = entity.EntityPositioning.GetPosition().GetAllEntitiesInNode();
 

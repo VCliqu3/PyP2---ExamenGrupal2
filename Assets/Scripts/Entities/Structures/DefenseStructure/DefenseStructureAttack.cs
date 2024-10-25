@@ -23,6 +23,18 @@ public class DefenseStructureAttack : EntityAttack
         return true;
     }
 
+    protected override Entity FindTarget()
+    {
+        List<Entity> potentialTargets = EntitiesManager.Instance.EnemyEntities;
+
+        foreach (Entity potentialTarget in potentialTargets)
+        {
+            if (CanAttackEntity(potentialTarget)) return potentialTarget;
+        }
+
+        return null;
+    }
+
     protected override void Attack(Entity entity)
     {
         Transform projectileTransform = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);

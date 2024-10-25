@@ -34,9 +34,27 @@ public class GoldManager : MonoBehaviour
         CollectorStructureCollection.OnAnyGoldCollected -= CollectorStructureCollection_OnAnyGoldCollected;
     }
 
+    private void Awake()
+    {
+        SetSingleton();
+    }
+
     private void Start()
     {
         InitializeGold();
+    }
+
+    private void SetSingleton()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("There is more than one GoldManager Instance, proceding to destroy duplicate");
+            Destroy(gameObject);
+        }
     }
 
     private void InitializeGold()
@@ -67,7 +85,7 @@ public class GoldManager : MonoBehaviour
     #region CollectorStructureCollection Subscriptions
     private void CollectorStructureCollection_OnAnyGoldCollected(object sender, CollectorStructureCollection.OnAnyGoldCollectedEventArgs e)
     {
-        throw new NotImplementedException();
+        IncreaseGold(e.gold);
     }
     #endregion
 }
