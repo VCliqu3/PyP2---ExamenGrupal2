@@ -185,4 +185,4 @@ MonoBehaviour:
   target: {fileID: 0}
   damage: 0
   speed: 0
-  lifeSpan: 10
+  lifeSpan: 50
